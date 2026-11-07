@@ -10,9 +10,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t clouddeploy:latest .
+        run: docker build -t ghcr.io/shafin123-tech/clouddeploy:${{ github.sha }} .
+
+      - name: Push Docker image to GHCR
+        run: docker push ghcr.io/shafin123-tech/clouddeploy:${{ github.sha }}
