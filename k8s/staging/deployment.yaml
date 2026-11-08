@@ -1,0 +1,26 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: clouddeploy
+  namespace: staging
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: clouddeploy
+
+  template:
+    metadata:
+      labels:
+        app: clouddeploy
+
+    spec:
+      containers:
+        - name: clouddeploy
+          image: ghcr.io/shafin123-tech/clouddeploy:d4c72cbb300babaac3de54331763dcf7b84295b6
+          ports:
+            - containerPort: 8080
