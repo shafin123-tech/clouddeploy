@@ -5,7 +5,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        version = os.getenv("APP_VERSION", "1.0.0")
+        version = os.getenv("APP_VERSION", "1.1.0")
 
         if self.path == "/test":
             message = "CloudDeploy service is running"
