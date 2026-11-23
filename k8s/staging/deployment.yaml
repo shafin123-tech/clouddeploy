@@ -21,6 +21,6 @@ spec:
     spec:
       containers:
         - name: clouddeploy
-          image: ghcr.io/shafin123-tech/clouddeploy:70462a4254e7371ae06b6cb9017e54ba421a60d0
+          image: ghcr.io/shafin123-tech/clouddeploy:0000000000000000000000000000000000000000
           ports:
             - containerPort: 8080
